@@ -1,0 +1,607 @@
+/* Prevent adjustments of font size after orientation changes in IE on Windows Phone and in iOS.  */
+
+/* 1. GLOBAL RESET & VARIABLES */
+:root {
+    --primary-color: #cc5500;
+    --light-bg: #A8DCAB;
+    --dark-bg: #000000;
+    --border-color: #e0e0e0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* 2. Use a bolder weight for headings to match your "Peak Landscape" branding */
+h1, h2, h3, .logo span {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700; /* Bold weight */
+}
+
+/* 3. Use a lighter weight for testimonials or subtext if you want that high-end feel */
+.testimonial-text p {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300; /* Light weight */
+    font-style: italic;
+}
+body {
+    min-width: 320px;
+    line-height: 1.6;
+    background-color: var(--light-bg);
+}
+
+/* 2. TOP BAR (Logo & Phone) */
+.top-bar {
+    width: 100%;             /* Spans full screen width */
+    background-color: var(--light-bg);
+    border-bottom: 1px solid var(--border-color);
+    padding: 15px 0;
+}
+
+/* The inner container keeps content from hitting the screen edges */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo img {
+    display: block !important;
+    width: 50px; /* Adjust based on your preference */
+    height: auto;
+    visibility: visible;
+    opacity: 1;
+}
+
+.logo span {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    text-transform: uppercase;
+}
+
+.phone {
+    color: #666;
+    font-size: 1.1rem;
+}
+
+/* 3. NAVIGATION BAR (Black Band) */
+.nav-bar {
+    width: 100%;             /* Spans full screen width */
+    background-color: var(--dark-bg);
+    position: relative;
+}
+
+#hamburgerBtn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 2.2rem;
+    padding: 10px 20px;
+    cursor: pointer;
+    display: block; /* Visible on mobile */
+}
+
+/* Centers the menu within the black bar */
+.nav-menu-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.nav-menu {
+    list-style: none;
+    display: none; /* Hidden by default on mobile */
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-menu li {
+    /* Spacing between menu items */
+    width: 100%;
+    border-top: 1px solid #333;
+}
+
+.nav-menu a {
+    display: block;
+    padding: 15px 25px;      /* Increases clickable area */
+    text-decoration: none;
+    color: white;
+    font-size: 14px;
+    transition: color 0.3s;
+}
+
+.nav-menu a:hover {
+    color: var(--primary-color);
+}
+
+/* Class added by JS to show the menu */
+.nav-menu.open {
+    display: flex;
+}
+
+/* Active State matching your reference image */
+.nav-menu a.active {
+    color: var(--primary-color);
+    font-weight: bold;
+    border-bottom: 3px solid var(--primary-color);
+    padding-bottom: 12px;    /* Pulls the line up to the text slightly */
+}
+
+/* Base Styles */
+.sub-menu {
+    list-style: none;
+    padding-left: 20px; /* Indent for visual hierarchy */
+    background-color: #1a1a1a; /* Slightly lighter than main black */
+}
+
+.has-children .arrow {
+    font-size: 0.7rem;
+    margin-left: 5px;
+    vertical-align: middle;
+}
+
+/* Hide sub-menu by default if you want a toggle, 
+   but for "Two level deep nav" on small, we keep it visible or simple */
+
+   
+/* --------------------------- MAIN --------------------------- */
+main {
+    h1 {
+        padding: 1rem $gutter.5rem $gutter;
+        font-size: 1.5rem;
+        color: $secondaryColor;
+        font-weight: $lightWeight
+    }
+
+    p {
+        padding: .5rem $gutter;
+        color: #333;
+        line-height: $leading;
+    }
+}
+
+// end main
+
+
+
+/* --------------------------- FOOTER --------------------------- */
+#footerWrapper {
+    background-color: #000000
+}
+
+// end footer wrapper
+
+
+
+footer {
+    font-size: .85rem;
+    padding: 1rem $gutter;
+    color: $greyColor;
+    text-align: center;
+    line-height: $leading;
+
+    a {
+        color: $greyColor;
+    }
+}
+
+// end footer
+
+.hero-swiper {
+    width: 100%;
+    height: 80vh; /* Sets the slider to 80% of the screen height */
+}
+
+.swiper {
+    width: 100%;
+    height: 300px;
+    margin: 1rem 0;
+    position: relative;
+    touch-action: pan-y;
+}
+
+.swiper-wrapper {
+    height: 100%;
+}
+
+.swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    position: relative; /* Required for absolute positioning of children */
+}
+
+.swiper-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.slide-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* This perfectly centers the box */
+    z-index: 10;
+    
+    /* Keep your existing styling below */
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    padding: 1rem 2rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-align: center;
+    text-transform: uppercase;
+    border: 2px solid var(--primary-color);
+    border-radius: 5px;
+    pointer-events: none;
+    white-space: nowrap; /* Prevents text from wrapping too early */
+}
+
+.swiper-pagination {
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    z-index: 10;
+}
+
+.swiper-pagination-bullet {
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 12px;
+    height: 12px;
+    margin: 0 5px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.swiper-pagination-bullet-active {
+    background-color: $primaryColor;
+}
+
+/* HERO TAGLINE */
+.tagline-box {
+    text-align: center;
+    padding: 20px 10px;
+
+    p {
+        color: var(--primary-color);
+        font-weight: bold;
+        font-size: 1.2rem;
+    }
+}
+
+div.parent {
+    display: grid;
+    grid-template-columns: 1fr 1fr; // Keeps speakers side-by-side
+    gap: 20px; // Better than padding for grid spacing
+
+    section {
+        position: relative; // Needed for the absolute images inside
+        padding: 15px;
+        overflow: hidden; // Prevents rotated images from causing scrollbars
+
+        img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 1s ease-in-out;
+
+            // Apply the circle clip here if desired
+            clip-path: circle(50% at 50% 50%);
+
+            &:hover {
+                transform: rotate(15deg) scale(1.1); // Added scale for "Hierarchy"
+            }
+        }
+
+        // If you have two images overlapping
+        img:last-child {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 60%; // Make the overlapping image slightly smaller
+            z-index: 2;
+        }
+
+        h2 {
+            text-align: center;
+            margin-top: 10px;
+        }
+    }
+}
+
+/* Overlapping images section */
+section:has(img[src*="08home"]) {
+    position: relative;
+    width: fit-content;
+    margin: 0 auto;
+
+    h2 {
+        text-align: center;
+    }
+
+    img[src*="08home"] {
+        display: block;
+        width: 50%;
+        height: auto;
+        position: relative;
+        z-index: 1;
+    }
+
+    img[src*="grass"] {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 50%;
+        height: auto;
+        z-index: 10;
+        display: block;
+        margin: 0;
+        margin-top: -40px;
+    }
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* Vertically centers the logo and phone number */
+    padding: 0 20px;
+    /* Optional: adds some breathing room on the sides */
+}
+
+.logo-phone {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    /* Adds space between the logo image and the text */
+}
+
+
+/* 1. Services Section & Grid */
+.services-section {
+    padding: 40px 5%;
+    background: var(--light-bg);
+}
+
+.services-section h2 {
+    color: #cc5500;
+    margin-bottom: 20px;
+}
+
+/* MOBILE DEFAULT (Vertical Stack) */
+.services-grid {
+    display: grid;
+    /* One column by default: everything stacks vertically */
+    grid-template-columns: 1fr; 
+    gap: 20px;
+    width: 100%;
+}
+
+/* TABLET & MEDIUM SCREENS (Horizontal/2-columns) */
+@media (min-width: 768px) {
+    .services-grid {
+        /* Once the screen is wider than 768px, show 2 cards per row */
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Desktop Navigation Reset */
+@media (min-width: 768px) {
+    #hamburgerBtn { display: none; }
+    .nav-menu {
+        display: flex;
+        flex-direction: row;
+        border-top: none;
+    }
+    .nav-menu li { border-top: none; width: auto; }
+}
+
+/* LARGE SCREENS (Horizontal/4-columns) */
+@media (min-width: 1200px) {
+    .services-grid {
+        /* On desktop, show all 4 cards horizontally in one row */
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* 2. Card Base & Header */
+.service-card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden; /* Clips the top corners of the header */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.card-header {
+    background: #cc5500;
+    color: white;
+    text-align: center;
+    padding: 15px 10px;
+    font-weight: bold;
+    position: relative;
+    z-index: 10;
+}
+
+/* Ensure the container is full width */
+.service-card .card-image {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    overflow: visible;
+    background: transparent;
+    display: block; /* Force block behavior */
+}
+
+/* Force the image to stretch and fill the container */
+.service-card .card-image img {
+    width: 100% !important;   /* Added !important to override any hidden defaults */
+    height: 100% !important;  /* Added !important to force the 200px height */
+    object-fit: cover; 
+    display: block;
+    clip-path: ellipse(100% 100% at 50% 0%); 
+    transition: transform 0.5s ease;
+}
+
+/* Ensure the hover effect still works */
+.service-card:hover .card-image img {
+    transform: scale(1.05);
+}
+
+/* 4. Hover Effect */
+.service-card:hover .card-image img {
+    transform: scale(1.05);
+}
+
+/* 5. Specific Edge Styles */
+/* Grass Effect */
+.svg-edge .card-image::after {
+    content: "";
+    position: absolute;
+    bottom: -1px; /* Overlap slightly to hide gaps */
+    left: 0;
+    width: 100%;
+    height: 40px;
+    background-image: url('https://i.imgur.com/39Y9o0Z.png');
+    background-size: contain;
+    background-repeat: repeat-x;
+    background-position: bottom;
+    z-index: 5;
+    pointer-events: none;
+}
+
+/* Smooth Curve (Ensuring consistency) */
+.png-edge .card-image img {
+    clip-path: ellipse(100% 100% at 50% 0%);
+}
+
+/* 6. Text Content */
+.card-content {
+    padding: 15px;
+    font-size: 14px;
+    color: #333;
+}
+
+/* 1. Base Section & Layout */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.testimonials-section {
+    padding: 80px 0; /* Slightly more vertical breathing room */
+    background-color: var(--light-bg);
+}
+
+.testimonials-section h2 {
+    text-align: center;
+    color: #cc5500;
+    margin-bottom: 50px;
+}
+
+.testimonials-list {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+/* 2. The Card (Desktop View) */
+.testimonial-card {
+    display: flex;
+    flex-direction: row; /* Image and text side-by-side */
+    align-items: center;
+    background: white;
+    padding: 30px; 
+    border-radius: 12px;
+    gap: 40px; 
+    max-width: 600px;
+    margin: 20px auto;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05); /* Subtle shadow for depth */
+}
+
+/* 3. The Image Circle */
+.testimonial-image {
+    flex-shrink: 0;
+    width: 180px; 
+    height: 180px;
+}
+
+.testimonial-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    clip-path: circle(50% at 50% 50%);
+    display: block;
+}
+
+/* 4. The Text Body */
+.testimonial-text p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #444;
+    text-align: left;
+    font-style: italic;
+    margin: 0;
+}
+
+/* 5. Responsive: Desktop (Side-by-Side Cards) */
+@media (min-width: 1024px) {
+    .testimonials-list {
+        flex-direction: row;
+        justify-content: center;
+        align-items: stretch; /* Makes cards the same height */
+        gap: 30px; /* Increased gap for better breathing room */
+        padding: 0 20px;
+    }
+    
+    .testimonial-card {
+        margin: 0;
+        flex: 1; /* This tells cards to grow and shrink equally */
+        max-width: 550px; /* Slightly smaller max to ensure they fit side-by-side */
+    }
+
+    .testimonial-image {
+        width: 150px; /* Slightly smaller image on desktop gives text more room */
+        height: 150px;
+    }
+}
+
+/* 6. Responsive: Mobile (Stacked Cards) */
+@media (max-width: 768px) {
+    .testimonial-card {
+        flex-direction: column;
+        padding: 30px;
+        text-align: center;
+        gap: 20px;
+    }
+    
+    .testimonial-image {
+        width: 140px; /* Scaled down for mobile */
+        height: 140px;
+    }
+
+    .testimonial-text p {
+        text-align: center;
+        font-size: 1rem;
+    }
+}

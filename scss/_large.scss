@@ -1,0 +1,31 @@
+header, nav, main {
+    max-width: 960px;
+    margin: auto;
+}
+
+/* NAVIGATION STUFF GOES HERE  */
+div.parent {
+    section {
+        grid-template-columns: 200px auto;
+        column-gap: 8px
+        img{
+        }
+    }
+} // end parent section
+
+@media (min-width: 1024px) {
+    .nav-menu a {
+        padding: 10px 15px; /* Shorter padding */
+        font-size: 13px;    /* Slightly smaller font */
+    }
+    
+    /* Optional: Change the active state border for a sleeker look */
+    .nav-menu a.active {
+        border-bottom: 2px solid var(--primary-color);
+    }
+}
+
+div.parent {
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
